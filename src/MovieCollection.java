@@ -294,6 +294,7 @@ ArrayList<String> appear = new ArrayList<String>();
             int choiceNum = i + 1;
             System.out.println("" + choiceNum + ". " + name);
         }
+
         System.out.println("Which genre would you like to know which movies have? (Enter a number)");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -302,9 +303,33 @@ ArrayList<String> appear = new ArrayList<String>();
         ArrayList<String> gmovies = new ArrayList<String>();
         for (int i = 0; i < movies.size(); i++) {
             if(movies.get(i).getGenres().toLowerCase().contains(genre) ){
-                gmovies.add()
+                gmovies.add(movies.get(i).getTitle());
             }
         }
+        sortAlpha(gmovies);
+        for (int i = 0; i < gmovies.size(); i++)
+        {
+            String name = gmovies.get(i);
+
+            // this will print index 0 as choice 1 in the results list; better for user!
+            int choiceNum = i + 1;
+            System.out.println("" + choiceNum + ". " + name);
+        }
+
+        System.out.println("Which movie would you like to learn more about?");
+        System.out.print("Enter number: ");
+        choice = scanner.nextInt();
+        scanner.nextLine();
+
+        String searchTerm = gmovies.get(choice-1);
+
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getTitle()== searchTerm){
+                displayMovieInfo(movies.get(i));
+            }
+
+        }
+
 
     }
 
